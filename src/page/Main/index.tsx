@@ -5,7 +5,7 @@ import { Container } from './styles';
 export default function Main() {
   return (
     <Container>
-      <h1>Page Main</h1>
+      <h2>Page Main</h2>
     </Container>
   );
 }
