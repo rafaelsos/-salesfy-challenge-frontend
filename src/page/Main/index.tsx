@@ -1,21 +1,30 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import api from '../../service/api';
+
+import { TranslateNumber } from '../../store/modules/translated/types';
+import { translateRequest } from '../../store/modules/translated/actions';
 
 import logoNubank from '../../assets/Nubank_Logo.png';
 
-import { Container, Header, Card, TranslateNumber, CardList } from './styles';
-
-interface Numbers {
-  number: string;
-  description: string;
-}
+import {
+  Container,
+  Header,
+  Card,
+  CardTranslateNumber,
+  CardList,
+} from './styles';
 
 export default function Main() {
   const [numberInput, setNumberInput] = useState('');
   const [numberTranslate, setNumberTranslate] = useState('');
-  const [listNumbers, setListNumbers] = useState<Numbers[]>([]);
+  const [listNumbers, setListNumbers] = useState<TranslateNumber[]>([]);
+
+  const dispatch = useDispatch();
 
   async function handleTranslateNumber(number: string) {
+    dispatch(translateRequest(number));
+    /*
     if (!number) {
       alert('Digite o número que deseja traduzir');
       return;
@@ -37,6 +46,7 @@ export default function Main() {
       alert(error.response.data);
       setNumberInput('');
     }
+    */
   }
 
   return (
@@ -53,10 +63,10 @@ export default function Main() {
           value={numberInput}
         />
 
-        <TranslateNumber>
+        <CardTranslateNumber>
           <span>Numero Traduzido</span>
           <strong>{numberTranslate}</strong>
-        </TranslateNumber>
+        </CardTranslateNumber>
 
         <button
           type="button"

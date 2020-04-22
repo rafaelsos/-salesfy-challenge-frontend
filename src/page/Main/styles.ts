@@ -76,7 +76,7 @@ export const Card = styled.div`
   }
 `;
 
-export const TranslateNumber = styled.div`
+export const CardTranslateNumber = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 10px;
