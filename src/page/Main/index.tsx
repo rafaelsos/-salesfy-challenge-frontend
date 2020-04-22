@@ -2,7 +2,7 @@ import React from 'react';
 
 import logoNubank from '../../assets/Nubank_Logo.png';
 
-import { Container, Header, Card, TranslateNumber } from './styles';
+import { Container, Header, Card, TranslateNumber, CardList } from './styles';
 
 export default function Main() {
   return (
@@ -22,6 +22,47 @@ export default function Main() {
         </TranslateNumber>
         <button type="button">Traduzir</button>
       </Card>
+
+      <CardList>
+        <p>Total de 6 numeros traudizdos</p>
+        <ul>
+          <li>
+            <p>Number 99988877</p>
+            <strong>
+              ninety-nine million nine hundred eighty-eight thousand eight
+              hundred seventy-seven
+            </strong>
+          </li>
+          <li>
+            <p>Number 99988877</p>
+            <strong>
+              ninety-nine million nine hundred eighty-eight thousand eight
+              hundred seventy-seven
+            </strong>
+          </li>
+          <li>
+            <p>Number 99988877</p>
+            <strong>
+              ninety-nine million nine hundred eighty-eight thousand eight
+              hundred seventy-seven
+            </strong>
+          </li>
+          <li>
+            <p>Number 99988877</p>
+            <strong>
+              ninety-nine million nine hundred eighty-eight thousand eight
+              hundred seventy-seven
+            </strong>
+          </li>
+          <li>
+            <p>Number 99988877</p>
+            <strong>
+              ninety-nine million nine hundred eighty-eight thousand eight
+              hundred seventy-seven
+            </strong>
+          </li>
+        </ul>
+      </CardList>
     </Container>
   );
 }

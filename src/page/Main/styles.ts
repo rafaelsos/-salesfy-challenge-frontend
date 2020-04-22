@@ -71,7 +71,7 @@ export const Card = styled.div`
     transition: background 0.2s;
 
     &:hover {
-      background: ${darken(0.03, 'rgb(138, 5, 170)')};
+      background: ${darken(0.02, '#fff')};
     }
   }
 `;
@@ -94,5 +94,44 @@ export const TranslateNumber = styled.div`
   strong {
     height: 60px;
     margin-bottom: 10px;
+  }
+`;
+export const CardList = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  margin-top: 10px;
+  background: #fff;
+  width: 400px;
+  height: 230px;
+  padding: 10px;
+
+  > p {
+    font-size: 14px;
+    font-weight: bold;
+    color: #565656;
+  }
+
+  ul {
+    list-style: none;
+    height: 180px;
+    overflow: auto;
+
+    li {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 10px;
+      background: #f2f2f2;
+      border-radius: 4px;
+      margin: 0px 5px;
+
+      & + li {
+        margin: 5px;
+      }
+    }
   }
 `;
