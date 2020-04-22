@@ -24,38 +24,28 @@ export default function Main() {
       </Card>
 
       <CardList>
-        <p>Total de 6 numeros traudizdos</p>
+        <span>Total de 6 numeros traudizdos</span>
         <ul>
           <li>
-            <p>Number 99988877</p>
+            <p>Numero 99988877</p>
             <strong>
               ninety-nine million nine hundred eighty-eight thousand eight
               hundred seventy-seven
             </strong>
           </li>
           <li>
-            <p>Number 99988877</p>
+            <p>Numero 99988877</p>
             <strong>
               ninety-nine million nine hundred eighty-eight thousand eight
               hundred seventy-seven
             </strong>
           </li>
           <li>
-            <p>Number 99988877</p>
-            <strong>
-              ninety-nine million nine hundred eighty-eight thousand eight
-              hundred seventy-seven
-            </strong>
+            <p>Numero 99988877</p>
+            <strong>ninety-nine</strong>
           </li>
           <li>
-            <p>Number 99988877</p>
-            <strong>
-              ninety-nine million nine hundred eighty-eight thousand eight
-              hundred seventy-seven
-            </strong>
-          </li>
-          <li>
-            <p>Number 99988877</p>
+            <p>Numero 99988877</p>
             <strong>
               ninety-nine million nine hundred eighty-eight thousand eight
               hundred seventy-seven

@@ -106,12 +106,13 @@ export const CardList = styled.div`
   background: #fff;
   width: 400px;
   height: 230px;
-  padding: 10px;
+  padding: 20px;
 
-  > p {
+  > span {
     font-size: 14px;
     font-weight: bold;
     color: #565656;
+    margin-bottom: 10px;
   }
 
   ul {
@@ -125,13 +126,39 @@ export const CardList = styled.div`
       justify-content: flex-start;
       align-items: flex-start;
       padding: 10px;
-      background: #f2f2f2;
-      border-radius: 4px;
       margin: 0px 5px;
+      padding: 0.5em 0;
+      border-bottom: 1px solid #612f74;
 
       & + li {
         margin: 5px;
       }
+
+      p {
+        font-size: 12px;
+        font-weight: bold;
+        color: #565656;
+      }
+
+      strong {
+        color: #612f74;
+      }
+    }
+
+    &::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      background-color: #f5f5f5;
+    }
+
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      background-color: #612f74;
     }
   }
 `;
