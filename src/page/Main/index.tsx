@@ -1,11 +1,16 @@
 import React from 'react';
 
-import { Container } from './styles';
+import logoNubank from '../../assets/Nubank_Logo.png';
+
+import { Container, Header } from './styles';
 
 export default function Main() {
   return (
     <Container>
-      <h2>Page Main</h2>
+      <Header>
+        <img src={logoNubank} alt="nubankLogo" />
+        <h1>Salesfy</h1>
+      </Header>
     </Container>
   );
 }
