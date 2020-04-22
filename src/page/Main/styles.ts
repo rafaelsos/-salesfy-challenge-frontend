@@ -31,30 +31,58 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 2px;
+  border-radius: 4px;
   padding: 20px;
-  margin-top: 10px;
+  margin-top: 20px;
 
   width: 400px;
-  height: 200px;
+  height: 230px;
   background: #fff;
 
   input {
     font-size: 24px;
     font-weight: bold;
-    padding: 10px;
     border-radius: 4px;
     border: none;
     background: #f0f0f0;
     text-align: center;
     width: 250px;
-    height: 40px;
+    min-height: 40px;
 
     &::placeholder {
       color: #dedede;
       font-size: 14px;
     }
   }
+
+  button {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+    margin-top: auto;
+    border-radius: 4px;
+    border: 1px solid #612f74;
+    background: transparent;
+    color: #612f74;
+
+    width: 250px;
+    height: 40px;
+
+    transition: background 0.2s;
+
+    &:hover {
+      background: ${darken(0.03, 'rgb(138, 5, 170)')};
+    }
+  }
+`;
+
+export const TranslateNumber = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+
+  width: 250px;
+  height: auto;
 
   span {
     font-size: 14px;
@@ -65,24 +93,6 @@ export const Card = styled.div`
 
   strong {
     height: 60px;
-  }
-
-  button {
-    font-size: 20px;
-    font-weight: bold;
-    padding: 10px;
-    border-radius: 4px;
-    border: none;
-    background: rgb(138, 5, 170);
-    color: #fff;
-    text-align: center;
-    width: 250px;
-    height: 40px;
-    margin-top: auto;
-    transition: background 0.2s;
-
-    &:hover {
-      background: ${darken(0.03, 'rgb(138, 5, 170)')};
-    }
+    margin-bottom: 10px;
   }
 `;
