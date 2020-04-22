@@ -86,8 +86,8 @@ export default function Main() {
             </ul>
           </>
         ) : (
-            <span>Nenhum item traduzido até o momento!</span>
-          )}
+          <span>Nenhum item traduzido até o momento!</span>
+        )}
       </CardList>
     </Container>
   );
