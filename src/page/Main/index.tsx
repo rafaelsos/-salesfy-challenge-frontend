@@ -52,17 +52,11 @@ export default function Main() {
           onChange={(e) => setNumberInput(e.target.value)}
           value={numberInput}
         />
-        {numberTranslate ? (
-          <TranslateNumber>
-            <span>
-              Numero
-              {numberInput}
-            </span>
-            <strong>{numberTranslate}</strong>
-          </TranslateNumber>
-        ) : (
-            ''
-          )}
+
+        <TranslateNumber>
+          <span>Numero Traduzido</span>
+          <strong>{numberTranslate}</strong>
+        </TranslateNumber>
 
         <button
           type="button"
@@ -71,24 +65,30 @@ export default function Main() {
           Traduzir
         </button>
       </Card>
-      {listNumbers.length ? (
-        <CardList>
-          <span>Total de 6 numeros traudizdos</span>
-          <ul>
-            {listNumbers.map((item) => (
-              <li key={item.number}>
-                <p>
-                  Numero
-                  {item.number}
-                </p>
-                <strong>{item.description}</strong>
-              </li>
-            ))}
-          </ul>
-        </CardList>
-      ) : (
-          ''
-        )}
+      <CardList>
+        {listNumbers.length ? (
+          <>
+            <span>
+              Total de
+              {` ${listNumbers.length} `}
+              numeros traudizdos
+            </span>
+            <ul>
+              {listNumbers.map((item) => (
+                <li key={item.number}>
+                  <p>
+                    Numero
+                    {` ${item.number}`}
+                  </p>
+                  <strong>{item.description}</strong>
+                </li>
+              ))}
+            </ul>
+          </>
+        ) : (
+            <span>Nenhum item traduzido até o momento!</span>
+          )}
+      </CardList>
     </Container>
   );
 }

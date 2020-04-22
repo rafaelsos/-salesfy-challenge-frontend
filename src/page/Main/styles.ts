@@ -36,7 +36,7 @@ export const Card = styled.div`
   margin-top: 20px;
 
   width: 400px;
-  height: 230px;
+  min-height: 230px;
   background: #fff;
 
   input {
@@ -85,15 +85,18 @@ export const TranslateNumber = styled.div`
   height: auto;
 
   span {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: bold;
     color: #565656;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
   }
 
   strong {
-    height: 60px;
     margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #f0f0f0;
+    min-height: 65px;
   }
 `;
 export const CardList = styled.div`
