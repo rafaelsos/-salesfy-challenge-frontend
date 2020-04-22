@@ -119,6 +119,7 @@ export const CardList = styled.div`
     list-style: none;
     height: 180px;
     overflow: auto;
+    min-width: 350px;
 
     li {
       display: flex;
