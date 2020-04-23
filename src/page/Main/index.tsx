@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import api from '../../service/api';
 
+import { ApplicationState } from '../../store';
 import { TranslateNumber } from '../../store/modules/translated/types';
 import { translateRequest } from '../../store/modules/translated/actions';
 
@@ -22,32 +22,37 @@ export default function Main() {
 
   const dispatch = useDispatch();
 
+  const numTraduzido = useSelector(
+    (state: ApplicationState) => state.translated.numberTranslate,
+  );
+
+  // faz a tradução do numero e guarda no state
   async function handleTranslateNumber(number: string) {
     dispatch(translateRequest(number));
-    /*
-    if (!number) {
-      alert('Digite o número que deseja traduzir');
-      return;
-    }
 
-    try {
-      const response = await api.get(`translate/${number}`);
-
-      setNumberTranslate(response.data);
-
-      setListNumbers([
-        ...listNumbers,
-        {
-          number,
-          description: response.data,
-        },
-      ]);
-    } catch (error) {
-      alert(error.response.data);
-      setNumberInput('');
-    }
-    */
+    setNumberTranslate(numTraduzido);
+    setListNumbers([
+      {
+        number: '1',
+        description: 'test',
+      },
+    ]);
   }
+
+  /*
+  // busca no state o number traduzido
+  const numeroTraduzido = useSelector(
+    (state: ApplicationState) => state.translated.numberTranslate,
+  );
+  setNumberTranslate(numeroTraduzido);
+
+  const list = useSelector((state: ApplicationState) =>
+    state.translated.data.map((item) => {
+      return item;
+    }, {}),
+  );
+  setListNumbers(list);
+  */
 
   return (
     <Container>
