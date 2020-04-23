@@ -28,8 +28,10 @@ export default function Main() {
   const numTranslate = useSelector(
     (state: ApplicationState) => state.translated.numberTranslate,
   );
-
   const list = useSelector((state: ApplicationState) => state.translated.data);
+  const total = useSelector(
+    (state: ApplicationState) => state.translated.totalNumbersTranslate,
+  );
 
   useEffect(() => {
     setNumberTranslate(numTranslate);
@@ -37,7 +39,7 @@ export default function Main() {
   }, [numTranslate, list]);
 
   async function handleTranslateNumber(number: string) {
-    dispatch(translateRequest(number));
+    dispatch(translateRequest(number, listNumbers.length));
   }
 
   return (
@@ -50,7 +52,7 @@ export default function Main() {
         <Card>
           <input
             type="text"
-            placeholder="Digite o número aqui..."
+            placeholder="Type the number here..."
             onChange={(e) => setNumberInput(e.target.value)}
             value={numberInput}
           />
@@ -58,11 +60,11 @@ export default function Main() {
             type="button"
             onClick={() => handleTranslateNumber(numberInput)}
           >
-            Traduzir
+            Translate
           </button>
 
           <CardTranslateNumber>
-            <span>Número Traduzido</span>
+            <span>Translated number</span>
             <strong>{numberTranslate}</strong>
           </CardTranslateNumber>
         </Card>
@@ -71,15 +73,15 @@ export default function Main() {
           {listNumbers.length ? (
             <>
               <span>
-                Total de
-                {` ${listNumbers.length} `}
-                números traudizdos
+                There’s
+                {` ${total} `}
+                numbers translated
               </span>
               <ul>
                 {listNumbers?.map((item) => (
                   <li key={String(item.number)}>
                     <span>
-                      Número
+                      Number
                       {` ${item.number}`}
                     </span>
                     <strong>{item.description}</strong>
@@ -89,7 +91,7 @@ export default function Main() {
             </>
           ) : (
             <EmptyList>
-              <p>Nenhum número traduzido até o momento!</p>
+              <p>There are still no translated numbers!</p>
               <MdLineWeight size={150} color="#f0f0f0" />
             </EmptyList>
           )}

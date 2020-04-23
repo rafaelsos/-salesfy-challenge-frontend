@@ -21,5 +21,6 @@ export interface TranslateNumber {
 export interface TranslatedState {
   readonly data: TranslateNumber[];
   readonly numberTranslate: string;
+  readonly totalNumbersTranslate: string;
   readonly error: boolean;
 }

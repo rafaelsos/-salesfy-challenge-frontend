@@ -12,14 +12,17 @@ import {
 
 function* translateToNumber({ payload }: ReturnType<typeof translateRequest>) {
   try {
-    const response = yield call(api.get, `/translate/${payload}`);
+    const response = yield call(api.get, `/translate/${payload.number}`);
 
     const data = {
-      number: payload,
+      number: payload.number,
       description: response.data,
     };
 
-    yield put(translateSuccess(data, response.data));
+    const amount = payload.amount + 1;
+    const amountTranslate = yield call(api.get, `/translate/${amount}`);
+
+    yield put(translateSuccess(data, response.data, amountTranslate.data));
   } catch (error) {
     if (!payload) {
       toast.info('Digite o número que deseja traduzir');

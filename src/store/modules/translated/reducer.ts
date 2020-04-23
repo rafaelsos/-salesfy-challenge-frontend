@@ -6,6 +6,7 @@ const INITIAL_STATE: TranslatedState = {
   data: [],
   error: false,
   numberTranslate: '',
+  totalNumbersTranslate: '',
 };
 
 const reducer: Reducer<TranslatedState> = (state = INITIAL_STATE, action) =>
@@ -13,6 +14,7 @@ const reducer: Reducer<TranslatedState> = (state = INITIAL_STATE, action) =>
     switch (action.type) {
       case TranslatedTypes.TRANSLATE_SUCCESS: {
         draft.numberTranslate = action.payload.numero;
+        draft.totalNumbersTranslate = action.payload.amountTranslate;
         draft.error = false;
         draft.data.push(action.payload.data);
         break;
