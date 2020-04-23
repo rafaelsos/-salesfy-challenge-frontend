@@ -1,5 +1,5 @@
 import { call, put, all, takeLatest } from 'redux-saga/effects';
-
+import { toast } from 'react-toastify';
 import { TranslatedTypes } from './types';
 
 import api from '../../../service/api';
@@ -22,9 +22,9 @@ function* translateToNumber({ payload }: ReturnType<typeof translateRequest>) {
     yield put(translateSuccess(data, response.data));
   } catch (error) {
     if (!payload) {
-      alert('Digite o número que deseja traduzir');
+      toast.info('Digite o número que deseja traduzir');
     } else {
-      alert(error.response.data);
+      toast.info(error.response.data);
     }
 
     yield put(translateFailure());
