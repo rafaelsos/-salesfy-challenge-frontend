@@ -11,7 +11,8 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
   body {
-    background: #612F74;
+    background: rgb(138, 5, 170);
+    background-image:linear-gradient(-87deg, rgba(255,255,255,0.1) 1%,rgba(255,255,255,0.08) 10%,rgba(255,255,255,0.03) 20%,rgba(0,0,0,0) 30%,rgba(0,0,0,0.4) 100%);
     -webkit-font-smoothing: antialiased;
   }
   body, input, button {
