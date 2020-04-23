@@ -1,7 +1,7 @@
 import { all } from 'redux-saga/effects';
 
-import translate from './translated/sagas';
+import translated from './translated/sagas';
 
 export default function* rootSaga() {
-  return yield all([translate]);
+  return yield all([translated]);
 }

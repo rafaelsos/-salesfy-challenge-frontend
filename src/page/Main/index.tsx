@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { ApplicationState } from '../../store';
@@ -22,37 +22,20 @@ export default function Main() {
 
   const dispatch = useDispatch();
 
-  const numTraduzido = useSelector(
+  const numTranslate = useSelector(
     (state: ApplicationState) => state.translated.numberTranslate,
   );
 
-  // faz a tradução do numero e guarda no state
+  const list = useSelector((state: ApplicationState) => state.translated.data);
+
+  useEffect(() => {
+    setNumberTranslate(numTranslate);
+    setListNumbers(list);
+  }, [numTranslate, list]);
+
   async function handleTranslateNumber(number: string) {
     dispatch(translateRequest(number));
-
-    setNumberTranslate(numTraduzido);
-    setListNumbers([
-      {
-        number: '1',
-        description: 'test',
-      },
-    ]);
   }
-
-  /*
-  // busca no state o number traduzido
-  const numeroTraduzido = useSelector(
-    (state: ApplicationState) => state.translated.numberTranslate,
-  );
-  setNumberTranslate(numeroTraduzido);
-
-  const list = useSelector((state: ApplicationState) =>
-    state.translated.data.map((item) => {
-      return item;
-    }, {}),
-  );
-  setListNumbers(list);
-  */
 
   return (
     <Container>
@@ -89,8 +72,8 @@ export default function Main() {
               numeros traudizdos
             </span>
             <ul>
-              {listNumbers.map((item) => (
-                <li key={item.number}>
+              {listNumbers?.map((item) => (
+                <li key={String(item.number)}>
                   <p>
                     Numero
                     {` ${item.number}`}
