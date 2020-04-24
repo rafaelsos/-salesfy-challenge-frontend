@@ -4,7 +4,10 @@ import { MdLineWeight } from 'react-icons/md';
 
 import { ApplicationState } from '../../store';
 import { TranslateNumber } from '../../store/modules/translated/types';
-import { translateRequest } from '../../store/modules/translated/actions';
+import {
+  translateRequest,
+  translateCheckRequest,
+} from '../../store/modules/translated/actions';
 import List from '../../components/List';
 
 import logoNubank from '../../assets/Nubank_Logo.png';
@@ -42,10 +45,11 @@ export default function Main() {
   useEffect(() => {
     setNumberTranslate(numTranslate);
     setListNumbers(list);
-  }, [numTranslate, list]);
+  }, [numTranslate, list, total]);
 
   const handleTranslateNumber = useCallback(
     (number: string) => {
+      dispatch(translateCheckRequest());
       dispatch(translateRequest(number, listNumbers.length));
     },
     [dispatch, listNumbers.length],

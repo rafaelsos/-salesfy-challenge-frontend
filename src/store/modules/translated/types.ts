@@ -4,6 +4,8 @@
 export enum TranslatedTypes {
   TRANSLATE_REQUEST = '@translate/TRANSLATE_REQUEST',
   TRANSLATE_SUCCESS = '@translate/TRANSLATE_SUCCESS',
+  TRANSLATE_CHECK_REQUEST = '@translate/TRANSLATE_CHECK_REQUEST',
+  TRANSLATE_CHECK_UPDATE = '@translate/TRANSLATE_CHECK_UPDATE',
   TRANSLATE_FAILURE = '@translate/TRANSLATE_FAILURE',
 }
 
@@ -13,6 +15,7 @@ export enum TranslatedTypes {
 export interface TranslateNumber {
   number: string;
   description: string;
+  check: boolean;
 }
 
 /**

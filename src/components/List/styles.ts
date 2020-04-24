@@ -1,11 +1,10 @@
 import styled, { css } from 'styled-components';
 
-/*
 interface ContainerProps {
-  isCheck: boolean;
+  check: boolean;
 }
-*/
-export const Container = styled.div`
+
+export const Container = styled.div<ContainerProps>`
   margin: 0px 5px;
   padding: 10px 5px;
   background: #f0f0f0;
@@ -30,13 +29,11 @@ export const Container = styled.div`
 
     strong {
       color: #612f74;
-      /*
       ${(props) =>
-        props.isCheck &&
+        props.check &&
         css`
           color: #ff9000;
         `}
-        */
     }
   }
 `;

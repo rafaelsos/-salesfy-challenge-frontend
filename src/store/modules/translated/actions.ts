@@ -11,4 +11,10 @@ export const translateSuccess = (
 ) =>
   action(TranslatedTypes.TRANSLATE_SUCCESS, { data, numero, amountTranslate });
 
+export const translateCheckRequest = () =>
+  action(TranslatedTypes.TRANSLATE_CHECK_REQUEST);
+
+export const translateCheckUpdate = (index: number) =>
+  action(TranslatedTypes.TRANSLATE_CHECK_UPDATE, { index });
+
 export const translateFailure = () => action(TranslatedTypes.TRANSLATE_FAILURE);

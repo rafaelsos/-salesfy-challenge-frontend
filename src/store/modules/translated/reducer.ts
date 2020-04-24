@@ -19,6 +19,11 @@ const reducer: Reducer<TranslatedState> = (state = INITIAL_STATE, action) =>
         draft.data.push(action.payload.data);
         break;
       }
+      case TranslatedTypes.TRANSLATE_CHECK_UPDATE: {
+        draft.error = false;
+        draft.data[action.payload.index].check = false;
+        break;
+      }
       default:
     }
   });
