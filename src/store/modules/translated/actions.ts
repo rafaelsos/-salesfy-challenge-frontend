@@ -14,7 +14,7 @@ export const translateSuccess = (
 export const translateCheckRequest = () =>
   action(TranslatedTypes.TRANSLATE_CHECK_REQUEST);
 
-export const translateCheckUpdate = (index: number) =>
-  action(TranslatedTypes.TRANSLATE_CHECK_UPDATE, { index });
+export const translateCheckUpdate = (amount: string) =>
+  action(TranslatedTypes.TRANSLATE_CHECK_UPDATE, { amount });
 
 export const translateFailure = () => action(TranslatedTypes.TRANSLATE_FAILURE);

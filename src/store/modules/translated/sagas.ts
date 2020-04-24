@@ -1,6 +1,6 @@
 import { call, select, put, all, takeLatest } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
-import { TranslatedTypes, TranslateNumber } from './types';
+import { TranslatedTypes } from './types';
 import { ApplicationState } from '../..';
 
 import api from '../../../service/api';
@@ -25,8 +25,6 @@ function* translateToNumber({ payload }: ReturnType<typeof translateRequest>) {
     const amount = payload.amount + 1;
     const amountTranslate = yield call(api.get, `/translate/${amount}`);
 
-    data.check = data.description === amountTranslate.data;
-
     yield put(translateSuccess(data, response.data, amountTranslate.data));
   } catch (error) {
     if (!payload) {
@@ -40,14 +38,17 @@ function* translateToNumber({ payload }: ReturnType<typeof translateRequest>) {
 }
 
 function* translatedCheckNumber() {
-  const dataNumbers: TranslateNumber[] = yield select(
-    (state: ApplicationState) => state.translated.data,
+  const amountText: string = yield select(
+    (state: ApplicationState) => state.translated.totalNumbersTranslate,
   );
 
-  const numberIndex = dataNumbers.findIndex((item) => item.check === true);
-  if (numberIndex >= 0) {
-    yield put(translateCheckUpdate(numberIndex));
-  }
+  const number: string = yield select((state: ApplicationState) =>
+    state.translated.data.find((item) => item.description === amountText),
+  );
+
+  const dataNumber = number || '';
+
+  yield put(translateCheckUpdate(dataNumber));
 }
 
 export default all([

@@ -21,7 +21,11 @@ const reducer: Reducer<TranslatedState> = (state = INITIAL_STATE, action) =>
       }
       case TranslatedTypes.TRANSLATE_CHECK_UPDATE: {
         draft.error = false;
-        draft.data[action.payload.index].check = false;
+
+        const { description: amount } = action.payload.amount;
+        draft.data.forEach((item) => {
+          item.check = item.description === amount;
+        });
         break;
       }
       default:

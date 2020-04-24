@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { MdLineWeight } from 'react-icons/md';
 
@@ -28,6 +28,7 @@ interface TranslateProps {
 }
 
 export default function Main() {
+  const inputRef = useRef(null);
   const [numberInput, setNumberInput] = useState('');
   const [numberTranslate, setNumberTranslate] = useState('');
   const [listNumbers, setListNumbers] = useState<TranslateNumber[]>([]);
@@ -45,11 +46,11 @@ export default function Main() {
   useEffect(() => {
     setNumberTranslate(numTranslate);
     setListNumbers(list);
-  }, [numTranslate, list, total]);
+    dispatch(translateCheckRequest());
+  }, [numTranslate, list, total, dispatch]);
 
   const handleTranslateNumber = useCallback(
     (number: string) => {
-      dispatch(translateCheckRequest());
       dispatch(translateRequest(number, listNumbers.length));
     },
     [dispatch, listNumbers.length],
@@ -67,6 +68,7 @@ export default function Main() {
             type="text"
             placeholder="Type the number here..."
             onChange={(e) => setNumberInput(e.target.value)}
+            ref={inputRef}
             value={numberInput}
           />
           <button
