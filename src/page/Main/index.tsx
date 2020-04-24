@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { MdLineWeight } from 'react-icons/md';
 
 import { ApplicationState } from '../../store';
 import { TranslateNumber } from '../../store/modules/translated/types';
 import { translateRequest } from '../../store/modules/translated/actions';
+import List from '../../components/List';
 
 import logoNubank from '../../assets/Nubank_Logo.png';
 
@@ -17,6 +18,11 @@ import {
   Content,
   EmptyList,
 } from './styles';
+
+interface TranslateProps {
+  number: string;
+  amount: number;
+}
 
 export default function Main() {
   const [numberInput, setNumberInput] = useState('');
@@ -38,9 +44,12 @@ export default function Main() {
     setListNumbers(list);
   }, [numTranslate, list]);
 
-  async function handleTranslateNumber(number: string) {
-    dispatch(translateRequest(number, listNumbers.length));
-  }
+  const handleTranslateNumber = useCallback(
+    (number: string) => {
+      dispatch(translateRequest(number, listNumbers.length));
+    },
+    [dispatch, listNumbers.length],
+  );
 
   return (
     <Container>
@@ -79,13 +88,7 @@ export default function Main() {
               </span>
               <ul>
                 {listNumbers?.map((item) => (
-                  <li key={String(item.number)}>
-                    <span>
-                      Number
-                      {` ${item.number}`}
-                    </span>
-                    <strong>{item.description}</strong>
-                  </li>
+                  <List key={String(listNumbers.indexOf(item))} data={item} />
                 ))}
               </ul>
             </>

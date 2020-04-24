@@ -139,32 +139,6 @@ export const CardList = styled.div`
     overflow: auto;
     width: 400px;
 
-    li {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: flex-start;
-      margin: 0px 5px;
-      padding: 10px 5px;
-      background: #f0f0f0;
-      border-radius: 4px;
-
-      & + li {
-        margin: 5px;
-      }
-
-      span {
-        font-size: 12px;
-        font-weight: bold;
-        color: #565656;
-        margin-bottom: 5px;
-      }
-
-      strong {
-        color: #612f74;
-      }
-    }
-
     &::-webkit-scrollbar-track {
       box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
       border-radius: 10px;

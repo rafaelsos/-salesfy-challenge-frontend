@@ -48,7 +48,9 @@
     "import/extensions": "off",
     "no-alert": "off",
     "no-param-reassign": "off",
-    "no-console": "off"
+    "no-console": "off",
+    "react/prop-types": "off",
+    "react/jsx-props-no-spreading": "off"
   },
   "settings": {
     "import/resolver": {
