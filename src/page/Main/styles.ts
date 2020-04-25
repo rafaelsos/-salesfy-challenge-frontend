@@ -3,109 +3,96 @@ import { darken } from 'polished';
 
 export const Container = styled.div`
   height: 100%;
-`;
-
-export const Header = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin: 30px;
-
-  img {
-    width: 60px;
-    height: 60px;
-  }
-
-  h1 {
-    font-size: 18px;
-    color: #fff;
-    font-weight: bold;
-    margin-left: 8px;
-  }
+  position: relative;
+  margin-top: 100px;
 `;
 
 export const Content = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: start;
-
-  @media all and (max-width: 720px) {
-    flex-direction: column;
-    align-items: center;
-  }
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 0 auto;
 `;
 
-export const Card = styled.div`
+export const ContainerTranslate = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: stretch;
-  border-radius: 4px;
-  padding: 20px;
-  width: 400px;
-  height: 300px;
 
-  background: #fff;
+  > svg {
+    margin-bottom: 10px;
+  }
+`;
+
+export const Translate = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
 
   input {
     font-size: 22px;
     font-weight: bold;
     border-radius: 4px;
     border: none;
-    background: #f0f0f0;
+    background: #dedede;
     text-align: center;
-    width: 250px;
+    width: 200px;
     height: 40px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 2px;
 
-    margin-bottom: 10px;
     &::placeholder {
-      color: #dedede;
+      color: #c2c2c2;
       font-size: 14px;
     }
   }
 
   button {
-    font-size: 20px;
-    font-weight: bold;
-    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
     border-radius: 4px;
-    border: 1px solid #612f74;
-    background: transparent;
-    color: #612f74;
-    width: 250px;
+    border: 1px solid #8a05be;
+    background: #fff;
+    color: #8a05be;
+    width: 200px;
     height: 40px;
+    margin-left: 10px;
 
     transition: background 0.2s;
-
     &:hover {
-      background: ${darken(0.02, '#fff')};
+      background: ${darken(0.01, '#fff')};
+    }
+
+    span {
+      margin-left: 5px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #8a05be;
     }
   }
 `;
 
-export const CardTranslateNumber = styled.div`
+export const CardTranslate = styled.div`
   display: flex;
-  flex-direction: column;
-  margin-top: 20px;
-  width: 300px;
-
-  height: auto;
-
-  span {
-    font-size: 12px;
-    font-weight: bold;
-    color: #565656;
-    margin-bottom: 5px;
-  }
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border: 1px solid #8a05be;
+  box-shadow: rgb(138, 5, 190) 0px 1px 2pxpx;
+  width: 410px;
+  min-height: 100px;
 
   strong {
-    background: #f0f0f0;
-    color: #612f74;
-    padding: 20px;
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
+    color: #767676;
     border-radius: 4px;
-    line-height: 20px;
+    line-height: 25px;
   }
 `;
 
@@ -114,35 +101,28 @@ export const CardList = styled.div`
   flex-direction: column;
   align-items: center;
   border-radius: 4px;
-  margin-left: 10px;
+  height: 320px;
   padding: 20px;
-  width: 500px;
-  height: 400px;
+  margin-top: 10px;
 
-  background: #fff;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 2px 2px;
 
   > span {
-    font-size: 14px;
+    font-size: 18px;
     font-weight: bold;
-    color: #565656;
+    color: #999;
     margin-bottom: 10px;
-  }
-
-  > p {
-    font-size: 16px;
-    font-weight: bold;
-    color: #565656;
   }
 
   ul {
     list-style: none;
     overflow: auto;
-    width: 400px;
+    width: 630px;
 
     &::-webkit-scrollbar-track {
       box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
       border-radius: 10px;
-      background-color: #f5f5f5;
+      background-color: #fff;
     }
 
     &::-webkit-scrollbar {
@@ -152,15 +132,15 @@ export const CardList = styled.div`
     &::-webkit-scrollbar-thumb {
       border-radius: 10px;
       box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-      background-color: #612f74;
+      background-color: #8a05be;
     }
   }
+`;
 
-  @media all and (max-width: 720px) {
-    margin-left: 0;
-    margin-top: 10px;
-    width: 400px;
-    padding: 20px;
+export const Image = styled.div`
+  img {
+    width: 600px;
+    height: 500px;
   }
 `;
 
@@ -168,11 +148,11 @@ export const EmptyList = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 630px;
   margin-top: 80px;
-
   p {
     font-size: 20px;
-    color: #dedede;
+    color: #767676;
     font-weight: bold;
   }
 `;

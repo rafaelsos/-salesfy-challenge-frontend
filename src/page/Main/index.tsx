@@ -1,110 +1,103 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { MdLineWeight } from 'react-icons/md';
+import { MdGTranslate, MdSync, MdLineWeight } from 'react-icons/md';
 
 import { ApplicationState } from '../../store';
-import { TranslateNumber } from '../../store/modules/translated/types';
+
 import {
   translateRequest,
   translateCheckRequest,
 } from '../../store/modules/translated/actions';
 import List from '../../components/List';
 
-import logoNubank from '../../assets/Nubank_Logo.png';
+import nuContaDevice from '../../assets/nuconta-inclined-device@3x.png';
 
+import Header from '../../components/Header';
 import {
   Container,
-  Header,
-  Card,
-  CardTranslateNumber,
-  CardList,
   Content,
+  ContainerTranslate,
+  Translate,
+  CardTranslate,
+  CardList,
+  Image,
   EmptyList,
 } from './styles';
 
-interface TranslateProps {
-  number: string;
-  amount: number;
-}
-
 export default function Main() {
-  const inputRef = useRef(null);
-  const [numberInput, setNumberInput] = useState('');
-  const [numberTranslate, setNumberTranslate] = useState('');
-  const [listNumbers, setListNumbers] = useState<TranslateNumber[]>([]);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const [inputNumber, setInputNumber] = useState('');
 
   const dispatch = useDispatch();
-
-  const numTranslate = useSelector(
-    (state: ApplicationState) => state.translated.numberTranslate,
-  );
-  const list = useSelector((state: ApplicationState) => state.translated.data);
-  const total = useSelector(
-    (state: ApplicationState) => state.translated.totalNumbersTranslate,
-  );
+  const translated = useSelector((state: ApplicationState) => state.translated);
 
   useEffect(() => {
-    setNumberTranslate(numTranslate);
-    setListNumbers(list);
     dispatch(translateCheckRequest());
-  }, [numTranslate, list, total, dispatch]);
+    if (!translated.error) setInputNumber('');
+  }, [translated, dispatch]);
 
   const handleTranslateNumber = useCallback(
     (number: string) => {
-      dispatch(translateRequest(number, listNumbers.length));
+      dispatch(translateRequest(number));
+      if (inputRef.current) inputRef.current.focus();
     },
-    [dispatch, listNumbers.length],
+    [dispatch],
   );
 
   return (
     <Container>
-      <Header>
-        <img src={logoNubank} alt="nubankLogo" />
-        <h1>Salesfy</h1>
-      </Header>
+      <Header />
       <Content>
-        <Card>
-          <input
-            type="text"
-            placeholder="Type the number here..."
-            onChange={(e) => setNumberInput(e.target.value)}
-            ref={inputRef}
-            value={numberInput}
-          />
-          <button
-            type="button"
-            onClick={() => handleTranslateNumber(numberInput)}
-          >
-            Translate
-          </button>
-
-          <CardTranslateNumber>
-            <span>Translated number</span>
-            <strong>{numberTranslate}</strong>
-          </CardTranslateNumber>
-        </Card>
-
-        <CardList>
-          {listNumbers.length ? (
-            <>
-              <span>
-                There’s
-                {` ${total} `}
-                numbers translated
-              </span>
-              <ul>
-                {listNumbers?.map((item) => (
-                  <List key={String(listNumbers.indexOf(item))} data={item} />
-                ))}
-              </ul>
-            </>
-          ) : (
-            <EmptyList>
-              <p>There are still no translated numbers!</p>
-              <MdLineWeight size={150} color="#f0f0f0" />
-            </EmptyList>
-          )}
-        </CardList>
+        <ContainerTranslate>
+          <Translate>
+            <input
+              ref={inputRef}
+              type="text"
+              placeholder="Type the number here..."
+              onChange={(e) => setInputNumber(e.target.value)}
+              value={inputNumber}
+            />
+            <button
+              type="button"
+              onClick={() => handleTranslateNumber(inputNumber)}
+            >
+              <MdGTranslate size={40} color="#8a05be" />
+              <span>Translate</span>
+            </button>
+          </Translate>
+          <MdSync size={30} color="#8a05be" />
+          <CardTranslate>
+            <strong>{translated.numberTranslate}</strong>
+          </CardTranslate>
+          <CardList>
+            {translated.data.length ? (
+              <>
+                <span>
+                  There’s
+                  {` ${translated.totalNumbersTranslate} `}
+                  numbers translated
+                </span>
+                <ul>
+                  {translated.data?.map((item) => (
+                    <List
+                      key={String(translated.data.indexOf(item))}
+                      data={item}
+                    />
+                  ))}
+                </ul>
+              </>
+            ) : (
+              <EmptyList>
+                <p>There are still no translated numbers!</p>
+                <MdLineWeight size={150} color="#767676" />
+              </EmptyList>
+            )}
+          </CardList>
+        </ContainerTranslate>
+        <Image>
+          <img src={nuContaDevice} alt="nuContaDevice" />
+        </Image>
       </Content>
     </Container>
   );

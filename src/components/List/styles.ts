@@ -6,33 +6,32 @@ interface ContainerProps {
 
 export const Container = styled.div<ContainerProps>`
   margin: 0px 5px;
-  padding: 10px 5px;
-  background: #f0f0f0;
-  border-radius: 4px;
-
-  & + div {
-    margin: 5px;
-  }
+  padding: 15px;
+  border-bottom: 1px solid #8a05be;
 
   li {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
 
     span {
-      font-size: 12px;
+      font-size: 16px;
       font-weight: bold;
-      color: #565656;
-      margin-bottom: 5px;
+      color: #111;
+      border-radius: 2px;
+      padding: 5px 10px;
+      box-shadow: rgb(138, 5, 190) 0px 2px 4px;
+      margin-right: 15px;
     }
 
     strong {
-      color: #612f74;
+      font-size: 14px;
+      font-weight: bold;
+      color: #767676;
       ${(props) =>
         props.check &&
         css`
-          color: #ff9000;
+          color: #8a05be;
         `}
     }
   }

@@ -12,10 +12,7 @@ const List: React.FC<ListProps> = ({ data: item }) => {
   return (
     <Container check={item.check}>
       <li>
-        <span>
-          Number
-          {` ${item.number}`}
-        </span>
+        <span>{item.number}</span>
         <strong>{item.description}</strong>
       </li>
     </Container>

@@ -22,13 +22,16 @@ function* translateToNumber({ payload }: ReturnType<typeof translateRequest>) {
       check: false,
     };
 
-    const amount = payload.amount + 1;
+    const amount: number = yield select(
+      (state: ApplicationState) => state.translated.data.length + 1,
+    );
+
     const amountTranslate = yield call(api.get, `/translate/${amount}`);
 
     yield put(translateSuccess(data, response.data, amountTranslate.data));
   } catch (error) {
-    if (!payload) {
-      toast.info('Digite o número que deseja traduzir');
+    if (!payload.number) {
+      toast.info('Type the number you want to translate?');
     } else {
       toast.info(error.response.data);
     }
