@@ -3,18 +3,29 @@ import { darken } from 'polished';
 
 export const Container = styled.div`
   height: 100%;
-  position: relative;
   margin-top: 100px;
+
+  @media only screen and (max-width: 800px) {
+    margin-top: 20px;
+  }
 `;
 
 export const Content = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   margin: 0 auto;
+
+  @media all and (max-width: 800px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export const ContainerTranslate = styled.div`
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
 
@@ -104,7 +115,6 @@ export const CardList = styled.div`
   height: 320px;
   padding: 20px;
   margin-top: 10px;
-
   box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 2px 2px;
 
   > span {
@@ -135,24 +145,49 @@ export const CardList = styled.div`
       background-color: #8a05be;
     }
   }
+
+  @media all and (max-width: 800px) {
+    ul {
+      width: 370px;
+    }
+  }
 `;
 
 export const Image = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   img {
-    width: 600px;
-    height: 500px;
+    max-width: 100%;
+    max-height: 100%;
   }
+  /*
+  @media all and (max-width: 800px) {
+    img {
+      margin-top: 20px;
+      max-width: 350px;
+      max-height: 350px;
+    }
+  }
+  */
 `;
 
 export const EmptyList = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+
   width: 630px;
   margin-top: 80px;
   p {
     font-size: 20px;
     color: #767676;
     font-weight: bold;
+  }
+
+  @media all and (max-width: 800px) {
+    width: 370px;
   }
 `;

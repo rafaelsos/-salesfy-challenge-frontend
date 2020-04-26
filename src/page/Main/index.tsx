@@ -8,11 +8,11 @@ import {
   translateRequest,
   translateCheckRequest,
 } from '../../store/modules/translated/actions';
+
 import List from '../../components/List';
 
 import nuContaDevice from '../../assets/nuconta-inclined-device@3x.png';
 
-import Header from '../../components/Header';
 import {
   Container,
   Content,
@@ -47,7 +47,6 @@ export default function Main() {
 
   return (
     <Container>
-      <Header />
       <Content>
         <ContainerTranslate>
           <Translate>
