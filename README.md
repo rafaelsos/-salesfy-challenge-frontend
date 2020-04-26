@@ -1,6 +1,8 @@
 ### 📜 Sobre
 A aplicação em ReactJS (frontend) é a página para que usuário informe números (em formato numérico), e receba este número por escrito (em inglês).
 
+Permitido traduzir números de 1 até 999999999999.
+
 A lista dos últimos números traduzidos permanece na sessão do navegador.
 
 Está sendo armazenado o total de números da lista "There’s x numbers translated", onde "x" é o total.
@@ -12,7 +14,7 @@ O layout foi utilizado a pagina inicial do **NuBank** https://nubank.com.br/.
 1. Ter o **NodeJs** e o **Yarn** instalado
 
 ### :rocket: Começando
-1. ``https://github.com/rafaelsos/salesfy-challenge-frontend.git``
+1. git clone ``https://github.com/rafaelsos/salesfy-challenge-frontend.git``
 2. ``cd salesfy-challenge-frontend``
 3. rodar o comando ``yarn`` para fazer a instalação do projeto
 
